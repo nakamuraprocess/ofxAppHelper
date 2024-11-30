@@ -5,21 +5,12 @@
 #include <random>
 #include <regex>
 
-#include "movingAverage.h"
-#include "directoryWatcher.h"
-#ifdef TARGET_WIN32
-#include "Win32CreateProcess.h"
-#endif
-
 // Hide Console Window
 // Add to top in main.cpp
 // #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 
-
-
 static class ofxAppHelper {
 public:
-
 	static void setLog() {
 		ofLogToFile("log/" + ofxAppHelper::getToday() + ".log", true);
 	}
