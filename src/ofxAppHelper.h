@@ -7,7 +7,6 @@
 
 #include "movingAverage.h"
 #include "directoryWatcher.h"
-#include "JsonFileParser.h"
 #ifdef TARGET_WIN32
 #include "Win32CreateProcess.h"
 #endif
@@ -15,6 +14,8 @@
 // Hide Console Window
 // Add to top in main.cpp
 // #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+
+
 
 static class ofxAppHelper {
 public:
@@ -196,12 +197,12 @@ public:
 	static bool createDir(const string& path) {
 		ofDirectory dir;
 		if (!dir.doesDirectoryExist(path)) {
-			 return dir.createDirectory(path, true);
+			return dir.createDirectory(path, true);
 		}
 		else return false;
 	}
 
-	static vector <string> stringSplit(const string &str, char sep) {
+	static vector <string> stringSplit(const string& str, char sep) {
 		vector<string> v;
 		stringstream ss(str);
 		string buffer;
@@ -221,4 +222,9 @@ public:
 		string str = regex_replace(baseText, regex(replaceTarget), replaceText);
 		return str;
 	}
+
+	static int randomPlusMinus(){
+		return ofSign(ofRandomf());
+	}
 }ofxAppHelper;
+
